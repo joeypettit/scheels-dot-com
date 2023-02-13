@@ -41,6 +41,13 @@ function generateNumberedArray() {
 const displayFormButton = document.querySelector(".display-form-button");
 displayFormButton.addEventListener("click", function () {
   this.classList.toggle("active");
+
+  const accordion = document.querySelector("#accordion");
+  if (accordion.style.display === "block") {
+    accordion.style.display = "none";
+  } else {
+    accordion.style.display = "block";
+  }
 });
 
 generateNumberedArray();
