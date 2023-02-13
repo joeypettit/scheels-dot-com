@@ -8,9 +8,16 @@ const ul = document.querySelector("#list");
 console.log(ul);
 
 function appendList() {
-  for (let item of numberedArray) {
+  for (let i = 0; i < numberedArray.length; i++) {
     const newLi = document.createElement("li");
-    newLi.innerText = item;
+    if (i % 2 === 0) {
+      newLi.classList.add("li-even");
+    } else {
+      newLi.classList.add("li-odd");
+    }
+    const liText = document.createElement("div");
+    liText.innerText = numberedArray[i];
+    newLi.append(liText);
     ul.append(newLi);
   }
 }
