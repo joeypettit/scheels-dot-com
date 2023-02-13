@@ -5,12 +5,15 @@ let endingNumber = 100;
 const numberedArray = [];
 
 const ul = document.querySelector("#list");
-console.log(ul);
+const displayFormButton = document.querySelector(".display-form-button");
+const overlay = document.querySelector("#overlay");
 
 function appendList() {
   for (let i = 0; i < numberedArray.length; i++) {
     const newLi = document.createElement("li");
-    if (i % 2 === 0) {
+    if (numberedArray[i] === String(valueOne + valueTwo)) {
+      newLi.classList.add("li-has-both-values");
+    } else if (i % 2 === 0) {
       newLi.classList.add("li-even");
     } else {
       newLi.classList.add("li-odd");
@@ -25,7 +28,7 @@ function appendList() {
 function generateNumberedArray() {
   for (let i = startingNumber; i <= endingNumber; i++) {
     if (i % 3 === 0 && i % 5 === 0) {
-      numberedArray.push(String(valueOne) + String(valueTwo));
+      numberedArray.push(String(valueOne + valueTwo));
     } else if (i % 3 === 0) {
       numberedArray.push(String(valueOne));
     } else if (i % 5 === 0) {
@@ -38,9 +41,9 @@ function generateNumberedArray() {
 }
 
 // accordion display toggle
-const displayFormButton = document.querySelector(".display-form-button");
 displayFormButton.addEventListener("click", function () {
   this.classList.toggle("active");
+  overlay.classList.toggle("active");
 
   const accordion = document.querySelector("#accordion");
   console.log("here");
@@ -50,6 +53,8 @@ displayFormButton.addEventListener("click", function () {
     accordion.style.maxHeight = accordion.scrollHeight + "px";
   }
 });
+
+// click listener for overlay
 
 generateNumberedArray();
 appendList();
