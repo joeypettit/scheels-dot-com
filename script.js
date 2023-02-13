@@ -7,6 +7,7 @@ const numberedArray = [];
 const ul = document.querySelector("#list");
 const displayFormButton = document.querySelector(".display-form-button");
 const overlay = document.querySelector("#overlay");
+const accordion = document.querySelector("#accordion");
 
 function appendList() {
   for (let i = 0; i < numberedArray.length; i++) {
@@ -45,8 +46,6 @@ displayFormButton.addEventListener("click", function () {
   this.classList.toggle("active");
   overlay.classList.toggle("active");
 
-  const accordion = document.querySelector("#accordion");
-  console.log("here");
   if (accordion.style.maxHeight) {
     accordion.style.maxHeight = null;
   } else {
@@ -55,6 +54,11 @@ displayFormButton.addEventListener("click", function () {
 });
 
 // click listener for overlay
+overlay.addEventListener("click", function () {
+  this.classList.toggle("active");
+  displayFormButton.classList.toggle("active");
+  accordion.style.maxHeight = null;
+});
 
 generateNumberedArray();
 appendList();
