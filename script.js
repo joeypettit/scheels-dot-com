@@ -9,9 +9,9 @@ console.log(ul);
 
 function appendList() {
   for (let item of numberedArray) {
-    console.log("item is", item);
-    const listEl = `<li>${item}</li>`;
-    ul.append(listEl);
+    const newLi = document.createElement("li");
+    newLi.innerText = item;
+    ul.append(newLi);
   }
 }
 
