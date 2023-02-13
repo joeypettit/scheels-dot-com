@@ -54,14 +54,17 @@
 
 #accordion{
     background-color: var(--scheels-red);
-    padding: 10px;
-    display: none;
+    box-sizing: border-box;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }
 
 #edit-form{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding:10px;
 }
 
 .form-column{

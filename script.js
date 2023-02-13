@@ -43,10 +43,11 @@ displayFormButton.addEventListener("click", function () {
   this.classList.toggle("active");
 
   const accordion = document.querySelector("#accordion");
-  if (accordion.style.display === "block") {
-    accordion.style.display = "none";
+  console.log("here");
+  if (accordion.style.maxHeight) {
+    accordion.style.maxHeight = null;
   } else {
-    accordion.style.display = "block";
+    accordion.style.maxHeight = accordion.scrollHeight + "px";
   }
 });
 
