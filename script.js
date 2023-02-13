@@ -37,6 +37,12 @@ function generateNumberedArray() {
   console.log("numberedArray is", numberedArray);
 }
 
+// accordion display toggle
+const displayFormButton = document.querySelector(".display-form-button");
+displayFormButton.addEventListener("click", function () {
+  this.classList.toggle("active");
+});
+
 generateNumberedArray();
 appendList();
 

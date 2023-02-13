@@ -1,6 +1,7 @@
 :root {
     --scheels-red: rgb(200, 51, 58);
-    --scheels-gray: rgb(207, 212, 217);
+    --scheels-gray: rgb(240, 240, 240);
+    font-family: verdana;
   }
 
   body{
@@ -15,18 +16,16 @@
     flex-direction: column;
     box-sizing: border-box;
     background-color: white;
-    padding: 20px;
     width: 100%;
     box-shadow: 0 2px 2px rgba(0,0,0,0.2);
     margin-bottom: 10px;
-
+    min-width: 388px;
   }
 
   #nav-bar{
     display: flex;
+    padding: 20px;
     justify-content: space-between;
-    width: 100%;
-
   }
 
   #scheels-logo{
@@ -35,22 +34,80 @@
 
   }
 
-  #display-form-button{
+  .display-form-button{
     border: none;
     background-color: white;
     color: var(--scheels-red);
     cursor: pointer;
+    border-radius: 3px;
+  }
+
+  .active{
+    background-color: var(--scheels-gray);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.279) inset;
   }
 
   .bi-pencil-fill:hover{
     filter: drop-shadow(2px 2px 2px rgb(0 0 0 / 0.4));
+    transition: .1s;
 }
+
+#accordion{
+    background-color: var(--scheels-red);
+    padding: 10px;
+    display: none;
+}
+
+#edit-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.form-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-button{
+    border: none;
+    padding: 5px 10px 5px 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    background-color: white;
+    border-radius: 3px;
+    transition: all .3s ease;
+}
+
+.submit-button:hover{
+    color: white;
+    background-color: black;
+}
+
+.value-input{
+    border-radius: 30px;
+    padding: 10px 35px 10px 15px;
+    width: 100%;
+    border: none;
+    color: rgb(94, 94, 94);
+    background-color: var(--scheels-gray);
+    margin: 3px;
+}
+
+.value-input::placeholder {
+    font-family: verdana;
+    font-weight: bold;
+    font-size: smaller;
+  }
 
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     width: 80vw;
+    font-weight: 600;
   }
 
 
@@ -80,14 +137,8 @@ li:hover{
     padding-right: 1em;
 }
 
-.inactive{
-    background-image: url('./svgs/circle.svg');
-    color: slategray
-}
-
-.active{
-    background-image: url('./svgs/check-circle-fill.svg');
-    color: green;
+.hidden{
+    display: none;
 }
 
 
