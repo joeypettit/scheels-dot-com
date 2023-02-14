@@ -19,7 +19,7 @@
     width: 100%;
     box-shadow: 0 2px 2px rgba(0,0,0,0.2);
     margin-bottom: 10px;
-    min-width: 388px;
+    min-width: 530px;
     z-index: 10;
   }
 
@@ -63,9 +63,20 @@
 
 #edit-form{
     display: flex;
+    flex-direction: column;
+    padding:10px;
+}
+
+.form-row{
+    display: flex;
+    width: 100%;
     flex-direction: row;
     justify-content: space-around;
-    padding:10px;
+    align-items: center;
+}
+
+.form-label{
+    color: white;
 }
 
 .form-column{
@@ -75,7 +86,7 @@
     align-items: center;
 }
 
-.submit-button{
+.update-button{
     border: none;
     padding: 5px 10px 5px 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -85,7 +96,7 @@
     transition: all .3s ease;
 }
 
-.submit-button:hover{
+.update-button:hover{
     color: white;
     background-color: black;
 }

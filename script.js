@@ -1,18 +1,58 @@
-let valueOne = "SCHEELS";
-let valueTwo = ".COM";
+// global variables
+let defaultValueOne = "SCHEELS";
+let defaultValueTwo = ".COM";
+let currentValueOne = defaultValueOne;
+let currentValueTwo = defaultValueTwo;
 let startingNumber = 1;
 let endingNumber = 100;
-const numberedArray = [];
+let listArray = [];
 
+// select needed DOM nodes
 const ul = document.querySelector("#list");
 const displayFormButton = document.querySelector(".display-form-button");
 const overlay = document.querySelector("#overlay");
 const accordion = document.querySelector("#accordion");
+const multipleOfThreeIn = document.querySelector("#multiple-3-input");
+const multipleOfFiveIn = document.querySelector("#multiple-5-input");
+const editForm = document.querySelector("#edit-form");
 
+// prepopulate form with default values
+multipleOfThreeIn.value = defaultValueOne;
+multipleOfFiveIn.value = defaultValueTwo;
+
+// create list and append to DOM
+generateNumberedArray();
+appendList();
+
+// function to generate the numbered list with added values from the form
+function generateNumberedArray() {
+  // grab current values from Form element
+  let currentValueOne = multipleOfThreeIn.value;
+  let currentValueTwo = multipleOfFiveIn.value;
+
+  // clear global array
+  listArray = [];
+
+  for (let i = startingNumber; i <= endingNumber; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      listArray.push(String(currentValueOne + currentValueTwo));
+    } else if (i % 3 === 0) {
+      listArray.push(String(currentValueOne));
+    } else if (i % 5 === 0) {
+      listArray.push(String(currentValueTwo));
+    } else {
+      listArray.push(String(i));
+    }
+  }
+}
+
+// function which appends the list to the DOM
 function appendList() {
-  for (let i = 0; i < numberedArray.length; i++) {
+  // clear list
+  ul.replaceChildren();
+  for (let i = 0; i < listArray.length; i++) {
     const newLi = document.createElement("li");
-    if (numberedArray[i] === String(valueOne + valueTwo)) {
+    if (listArray[i] === String(currentValueOne + currentValueTwo)) {
       newLi.classList.add("li-has-both-values");
     } else if (i % 2 === 0) {
       newLi.classList.add("li-even");
@@ -20,28 +60,13 @@ function appendList() {
       newLi.classList.add("li-odd");
     }
     const liText = document.createElement("div");
-    liText.innerText = numberedArray[i];
+    liText.innerText = listArray[i];
     newLi.append(liText);
     ul.append(newLi);
   }
 }
 
-function generateNumberedArray() {
-  for (let i = startingNumber; i <= endingNumber; i++) {
-    if (i % 3 === 0 && i % 5 === 0) {
-      numberedArray.push(String(valueOne + valueTwo));
-    } else if (i % 3 === 0) {
-      numberedArray.push(String(valueOne));
-    } else if (i % 5 === 0) {
-      numberedArray.push(String(valueTwo));
-    } else {
-      numberedArray.push(String(i));
-    }
-  }
-  console.log("numberedArray is", numberedArray);
-}
-
-// accordion display toggle
+// accordion display toggle click listener
 displayFormButton.addEventListener("click", function () {
   this.classList.toggle("active");
   overlay.classList.toggle("active");
@@ -60,7 +85,12 @@ overlay.addEventListener("click", function () {
   accordion.style.maxHeight = null;
 });
 
-generateNumberedArray();
-appendList();
-
-console.log(numberedArray);
+// click listener for UPDATE button
+editForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  console.log("okay");
+  currentValueOne = multipleOfThreeIn.value;
+  currentValueTwo = multipleOfFiveIn.value;
+  generateNumberedArray();
+  appendList();
+});

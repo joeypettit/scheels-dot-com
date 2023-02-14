@@ -30,40 +30,60 @@
       </div>
       <div id="accordion">
         <form id="edit-form">
-          <div class="form-column">
-            <label for="multiple-3-input" class="hidden"
-              >Multiple of 3 Value</label
-            >
-            <input
-              type="text"
-              id="multiple-3-input"
-              class="value-input"
-              placeholder="VALUE FOR MULTIPLES OF THREE"
-            />
-            <label for="multiple-5-input" class="hidden"
-              >Multiple of 5 Value</label
-            >
-            <input
-              type="text"
-              id="multiple-5-input"
-              class="value-input"
-              placeholder="VALUE FOR MULTIPLES OF FIVE"
-            />
+          <div class="form-row">
+            <div class="form-column">
+              <label for="multiple-3-input" class="form-label"
+                >Multiple of 3 Value</label
+              >
+              <input
+                type="text"
+                id="multiple-3-input"
+                class="value-input"
+                placeholder="VALUE FOR MULTIPLES OF THREE"
+              />
+              <label for="multiple-5-input" class="form-label"
+                >Multiple of 5 Value</label
+              >
+              <input
+                type="text"
+                id="multiple-5-input"
+                class="value-input"
+                placeholder="VALUE FOR MULTIPLES OF FIVE"
+              />
+            </div>
+            <div class="form-column">
+              <label for="starting-number-input" class="form-label"
+                >Starting Number</label
+              >
+              <input
+                type="text"
+                id="starting-number-input"
+                class="value-input"
+                placeholder="STARTING LIST NUMBER"
+              />
+              <label for="ending-number-input" class="form-label"
+                >Ending Number</label
+              >
+              <input
+                type="text"
+                id="ending-number-input"
+                class="value-input"
+                placeholder="ENDING LIST NUMBER"
+              />
+            </div>
           </div>
-          <div class="form-column">
-            <button type="submit" class="submit-button">SUBMIT</button>
+          <div class="form-row">
+            <button type="submit" class="update-button">UPDATE</button>
           </div>
         </form>
       </div>
     </header>
-    <div id="overlay">
-    </div>
-        <main>
-        <section id="list-container">
-            <ul id="list"></ul>
-        </section>
-        </main>
-    
+    <div id="overlay"></div>
+    <main>
+      <section id="list-container">
+        <ul id="list"></ul>
+      </section>
+    </main>
 
     <!--Script-->
     <script src="script.js"></script>
