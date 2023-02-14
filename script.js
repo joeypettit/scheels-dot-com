@@ -1,67 +1,62 @@
 // global variables
-let defaultValueOne = "SCHEELS";
-let defaultValueTwo = ".COM";
-let defaultStartingNumber = 1;
-let defaultListLength = 99;
-let currentValueOne = defaultValueOne;
-let currentValueTwo = defaultValueTwo;
+let multiplesOfThreeValue = "SCHEELS";
+let multiplesOfFiveValue = ".COM";
 let startingNumber = 1;
 let listLength = 99;
 let listArray = [];
 
-// select needed DOM nodes
-const ul = document.querySelector("#list");
-const displayFormButton = document.querySelector(".display-form-button");
+// select relevant DOM nodes
+const domList = document.querySelector("#list");
+const showFormButton = document.querySelector(".display-form-button");
 const overlay = document.querySelector("#overlay");
 const accordion = document.querySelector("#accordion");
-const multipleOfThreeIn = document.querySelector("#multiple-3-input");
-const multipleOfFiveIn = document.querySelector("#multiple-5-input");
-const startingNumberIn = document.querySelector("#starting-number-input");
-const listLengthIn = document.querySelector("#list-length-input");
+const multiplesOfThreeInput = document.querySelector("#multiple-3-input");
+const multiplesOfFiveInput = document.querySelector("#multiple-5-input");
+const startingNumberInput = document.querySelector("#starting-number-input");
+const listLengthInput = document.querySelector("#list-length-input");
 const editForm = document.querySelector("#edit-form");
 
 // prepopulate form with default values
-multipleOfThreeIn.value = defaultValueOne;
-multipleOfFiveIn.value = defaultValueTwo;
-startingNumberIn.value = defaultStartingNumber;
-listLengthIn.value = defaultListLength;
+multiplesOfThreeInput.value = multiplesOfThreeValue;
+multiplesOfFiveInput.value = multiplesOfFiveValue;
+startingNumberInput.value = startingNumber;
+listLengthInput.value = listLength;
 
 // create list and append to DOM
-generateNumberedArray();
-appendList();
+generateListArray();
+appendListToDom();
 
 // ~~~ Event Listeners ~~~
 
 // accordion display toggle click listener
-displayFormButton.addEventListener("click", toggleDisplayForm);
+showFormButton.addEventListener("click", toggleShowForm);
 
 // click listener for overlay
-overlay.addEventListener("click", toggleDisplayForm);
+overlay.addEventListener("click", toggleShowForm);
 
 // click listener for UPDATE button
 editForm.addEventListener("submit", function (event) {
   event.preventDefault();
   updateCurrentFormValues();
-  generateNumberedArray();
-  appendList();
-  toggleDisplayForm();
-  console.log("current list", listLength);
+  generateListArray();
+  appendListToDom();
+  toggleShowForm();
 });
 
 // ~~~ Functions ~~~
 
 // function to generate the numbered list with added values from the form
-function generateNumberedArray() {
+function generateListArray() {
   // clear global array
   listArray = [];
 
   for (let i = startingNumber; i <= startingNumber + listLength; i++) {
     if (i % 3 === 0 && i % 5 === 0) {
-      listArray.push(String(currentValueOne + currentValueTwo));
+      listArray.push(String(multiplesOfThreeValue + multiplesOfFiveValue));
     } else if (i % 3 === 0) {
-      listArray.push(String(currentValueOne));
+      listArray.push(String(multiplesOfThreeValue));
     } else if (i % 5 === 0) {
-      listArray.push(String(currentValueTwo));
+      listArray.push(String(multiplesOfFiveValue));
     } else {
       listArray.push(String(i));
     }
@@ -69,28 +64,28 @@ function generateNumberedArray() {
 }
 
 // function which appends the list to the DOM
-function appendList() {
+function appendListToDom() {
   // clear list
-  ul.replaceChildren();
+  domList.replaceChildren();
   for (let i = 0; i < listArray.length; i++) {
-    const newLi = document.createElement("li");
-    if (listArray[i] === String(currentValueOne + currentValueTwo)) {
-      newLi.classList.add("li-has-both-values");
+    const newLiElement = document.createElement("li");
+    if (listArray[i] === String(multiplesOfThreeValue + multiplesOfFiveValue)) {
+      newLiElement.classList.add("li-has-both-values");
     } else if (i % 2 === 0) {
-      newLi.classList.add("li-even");
+      newLiElement.classList.add("li-even");
     } else {
-      newLi.classList.add("li-odd");
+      newLiElement.classList.add("li-odd");
     }
     const liText = document.createElement("div");
     liText.innerText = listArray[i];
-    newLi.append(liText);
-    ul.append(newLi);
+    newLiElement.append(liText);
+    domList.append(newLiElement);
   }
 }
 
-function toggleDisplayForm() {
+function toggleShowForm() {
   overlay.classList.toggle("active");
-  displayFormButton.classList.toggle("active");
+  showFormButton.classList.toggle("active");
   if (accordion.style.maxHeight) {
     accordion.style.maxHeight = null;
   } else {
@@ -99,8 +94,8 @@ function toggleDisplayForm() {
 }
 
 function updateCurrentFormValues() {
-  currentValueOne = multipleOfThreeIn.value;
-  currentValueTwo = multipleOfFiveIn.value;
-  startingNumber = Number(startingNumberIn.value);
-  listLength = Number(listLengthIn.value);
+  multiplesOfThreeValue = multiplesOfThreeInput.value;
+  multiplesOfFiveValue = multiplesOfFiveInput.value;
+  startingNumber = Number(startingNumberInput.value);
+  listLength = Number(listLengthInput.value);
 }
