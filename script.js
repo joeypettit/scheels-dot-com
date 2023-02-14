@@ -2,11 +2,11 @@
 let defaultValueOne = "SCHEELS";
 let defaultValueTwo = ".COM";
 let defaultStartingNumber = 1;
-let defaultListLength = 100;
+let defaultListLength = 99;
 let currentValueOne = defaultValueOne;
 let currentValueTwo = defaultValueTwo;
 let startingNumber = 1;
-let listLength = 100;
+let listLength = 99;
 let listArray = [];
 
 // select needed DOM nodes
@@ -55,7 +55,7 @@ function generateNumberedArray() {
   // clear global array
   listArray = [];
 
-  for (let i = startingNumber; i <= startingNumber + listLength - 1; i++) {
+  for (let i = startingNumber; i <= startingNumber + listLength; i++) {
     if (i % 3 === 0 && i % 5 === 0) {
       listArray.push(String(currentValueOne + currentValueTwo));
     } else if (i % 3 === 0) {
